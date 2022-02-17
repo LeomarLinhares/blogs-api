@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const {
   addUser,
 } = require('./controllers/userController');
+const {
+  validadeDisplayNameLength,
+} = require('./middlewares/userValidate');
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,4 +18,4 @@ app.get('/', (request, response) => {
 });
 
 app.route('/user')
-  .post(addUser);
+  .post(validadeDisplayNameLength, addUser);
