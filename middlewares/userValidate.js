@@ -4,6 +4,15 @@ module.exports = {
   validadeDisplayNameLength: (req, res, next) => {
     const { displayName } = req.body;
     if (displayName.length < 8) return res.status(400).json({ message: MSG.DISPLAY_NAME_LENGTH });
+
+    next();
+  },
+
+  validateEmail: (req, res, next) => {
+    const { email } = req.body;
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    if (!email.match(emailRegex)) return res.status(400).json({ message: MSG.INVALID_EMAIL });
+
     next();
   },
 };
