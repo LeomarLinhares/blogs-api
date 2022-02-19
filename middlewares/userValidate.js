@@ -37,4 +37,14 @@ module.exports = {
 
     next();
   },
+
+  validateUserAlreadyExists: async (req, res, next) => {
+    const { email } = req.body;
+    const response = await User.findOne({ where: { email } });
+    if (response !== null) {
+      res.status(409).json({ message: MSG.USER_ALREADY_EXISTS });
+    }
+  
+    next();
+  },
 };
