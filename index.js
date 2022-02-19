@@ -7,6 +7,7 @@ const {
   validadeDisplayNameLength,
   validateIfEmailExists,
   validateEmail,
+  validateIfPasswordExists,
 } = require('./middlewares/userValidate');
 
 const app = express();
@@ -20,4 +21,10 @@ app.get('/', (request, response) => {
 });
 
 app.route('/user')
-  .post(validadeDisplayNameLength, validateIfEmailExists, validateEmail, addUser);
+  .post(
+    validadeDisplayNameLength,
+    validateIfEmailExists,
+    validateEmail,
+    validateIfPasswordExists,
+    addUser,
+  );
