@@ -33,7 +33,7 @@ module.exports = {
 
   validatePassword: (req, res, next) => {
     const { password } = req.body;
-    if (password.length !== 6) res.status(400).json({ message: MSG.INVALID_PASSWORD });
+    if (password.length !== 6) return res.status(400).json({ message: MSG.INVALID_PASSWORD });
 
     next();
   },
@@ -42,7 +42,7 @@ module.exports = {
     const { email } = req.body;
     const response = await User.findOne({ where: { email } });
     if (response !== null) {
-      res.status(409).json({ message: MSG.USER_ALREADY_EXISTS });
+      return res.status(409).json({ message: MSG.USER_ALREADY_EXISTS });
     }
   
     next();
