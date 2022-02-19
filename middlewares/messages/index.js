@@ -3,4 +3,5 @@ module.exports = {
   INVALID_EMAIL: '"email" must be a valid email',
   EMAIL_REQUIRED: '"email" is required',
   PASSWORD_REQUIRED: '"password" is required',
+  INVALID_PASSWORD: '"password" length must be 6 characters long',
 };
