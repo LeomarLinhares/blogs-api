@@ -5,6 +5,7 @@ const {
 } = require('./controllers/userController');
 const {
   validadeDisplayNameLength,
+  validateIfEmailExists,
   validateEmail,
 } = require('./middlewares/userValidate');
 
@@ -19,4 +20,4 @@ app.get('/', (request, response) => {
 });
 
 app.route('/user')
-  .post(validadeDisplayNameLength, validateEmail, addUser);
+  .post(validadeDisplayNameLength, validateIfEmailExists, validateEmail, addUser);
