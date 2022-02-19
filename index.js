@@ -8,6 +8,8 @@ const {
   validateIfEmailExists,
   validateEmail,
   validateIfPasswordExists,
+  validatePassword,
+  validateUserAlreadyExists,
 } = require('./middlewares/userValidate');
 
 const app = express();
@@ -26,5 +28,7 @@ app.route('/user')
     validateIfEmailExists,
     validateEmail,
     validateIfPasswordExists,
+    validatePassword,
+    validateUserAlreadyExists,
     addUser,
   );
