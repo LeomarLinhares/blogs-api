@@ -22,4 +22,11 @@ module.exports = {
 
     next();
   },
+
+  validateIfPasswordExists: (req, res, next) => {
+    const { password } = req.body;
+    if (password === undefined) return res.status(400).json({ message: MSG.PASSWORD_REQUIRED });
+
+    next();
+  },
 };
