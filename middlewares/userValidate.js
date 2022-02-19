@@ -1,4 +1,5 @@
 const MSG = require('./messages');
+const { User } = require('../models');
 
 module.exports = {
   validadeDisplayNameLength: (req, res, next) => {
@@ -26,6 +27,13 @@ module.exports = {
   validateIfPasswordExists: (req, res, next) => {
     const { password } = req.body;
     if (password === undefined) return res.status(400).json({ message: MSG.PASSWORD_REQUIRED });
+
+    next();
+  },
+
+  validatePassword: (req, res, next) => {
+    const { password } = req.body;
+    if (password.length !== 6) res.status(400).json({ message: MSG.INVALID_PASSWORD });
 
     next();
   },
