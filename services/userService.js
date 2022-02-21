@@ -9,4 +9,17 @@ module.exports = {
       console.log(error);
     }
   },
+
+  getAll: async () => {
+    try {
+      const allUsers = await User.findAll();
+      return allUsers.map((user) => {
+        const thisUser = user.dataValues;
+        delete thisUser.password;
+        return thisUser;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
