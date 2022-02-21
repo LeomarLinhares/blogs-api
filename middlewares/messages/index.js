@@ -9,4 +9,5 @@ module.exports = {
   ER_EMPTY_PASSWORD: '"password" is not allowed to be empty',
   INVALID_FIELDS: 'Invalid fields',
   USER_DOES_NOT_EXIST: 'User does not exist',
+  NAME_REQUIRED: '"name" is required',
 };
