@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const {
   addUser,
 } = require('./controllers/userController');
+const { login } = require('./controllers/loginController');
 const {
   validadeDisplayNameLength,
   validateIfEmailExists,
@@ -10,7 +11,10 @@ const {
   validateIfPasswordExists,
   validatePassword,
   validateUserAlreadyExists,
-} = require('./middlewares/userValidate');
+  emailFieldIsEmpty,
+  passwordFieldIsEmpty,
+  validateUserNotExists,
+} = require('./middlewares');
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,4 +35,14 @@ app.route('/user')
     validatePassword,
     validateUserAlreadyExists,
     addUser,
+  );
+
+app.route('/login')
+  .post(
+    validateIfEmailExists,
+    validateIfPasswordExists,
+    emailFieldIsEmpty,
+    passwordFieldIsEmpty,
+    validateUserNotExists,
+    login,
   );
