@@ -20,6 +20,7 @@ const {
   passwordFieldIsEmpty,
   validateUserNotExists,
   validateIfUserExistsById,
+  validateIfThereIsAName,
 } = require('./middlewares');
 
 const app = express();
@@ -66,5 +67,7 @@ app.route('/login')
 
 app.route('/categories')
   .post(
+    validateJWT,
+    validateIfThereIsAName,
     createCategory,
   );
