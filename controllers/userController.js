@@ -10,4 +10,10 @@ module.exports = {
     const response = await userService.getAll();
     res.status(200).json(response);
   },
+
+  getUserById: async (req, res) => {
+    const { id } = req.params;
+    const response = await userService.getById(id);
+    res.status(200).json(response);
+  },
 };
