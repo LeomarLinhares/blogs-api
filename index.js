@@ -9,6 +9,7 @@ const {
   login,
   createCategory,
   getAllCategories,
+  createPost,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -22,6 +23,10 @@ const {
   validateUserNotExists,
   validateIfUserExistsById,
   validateIfThereIsAName,
+  validateIfTitleExists,
+  validateIfContentExists,
+  validateIfCategoryIdsExists,
+  validateIfInformedCategoryIdExistsInDatabase,
 } = require('./middlewares');
 
 const app = express();
@@ -75,4 +80,14 @@ app.route('/categories')
   .get(
     validateJWT,
     getAllCategories,
+  );
+
+app.route('/post')
+  .post(
+    validateJWT,
+    validateIfTitleExists,
+    validateIfContentExists,
+    validateIfCategoryIdsExists,
+    validateIfInformedCategoryIdExistsInDatabase,
+    createPost,
   );
