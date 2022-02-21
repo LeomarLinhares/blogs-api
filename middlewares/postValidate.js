@@ -14,4 +14,13 @@ module.exports = {
 
     next();
   },
+
+  validateIfCategoryIdsExists: (req, res, next) => {
+    const { categoryIds } = req.body;
+    if (categoryIds === undefined) {
+      return res.status(400).json({ message: MSG.CATEGORY_IDS_REQUIRED });
+    }
+  
+    next();
+  },
 };
