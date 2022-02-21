@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const {
   addUser,
   getAllUsers,
+  getUserById,
 } = require('./controllers/userController');
 const { login } = require('./controllers/loginController');
 const validateJWT = require('./api/auth/validateJWT');
@@ -16,6 +17,7 @@ const {
   emailFieldIsEmpty,
   passwordFieldIsEmpty,
   validateUserNotExists,
+  validateIfUserExistsById,
 } = require('./middlewares');
 
 const app = express();
@@ -27,6 +29,13 @@ app.listen(3000, () => console.log('ouvindo porta 3000!'));
 app.get('/', (request, response) => {
   response.send();
 });
+
+app.route('/user/:id')
+  .get(
+    validateJWT,
+    validateIfUserExistsById,
+    getUserById,
+  );
 
 app.route('/user')
   .post(
