@@ -8,6 +8,7 @@ const {
   getUserById,
   login,
   createCategory,
+  getAllCategories,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -70,4 +71,8 @@ app.route('/categories')
     validateJWT,
     validateIfThereIsAName,
     createCategory,
+  )
+  .get(
+    validateJWT,
+    getAllCategories,
   );
