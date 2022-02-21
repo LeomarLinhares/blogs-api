@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {
   addUser,
+  getAllUsers,
 } = require('./controllers/userController');
 const { login } = require('./controllers/loginController');
+const validateJWT = require('./api/auth/validateJWT');
 const {
   validadeDisplayNameLength,
   validateIfEmailExists,
@@ -35,6 +37,10 @@ app.route('/user')
     validatePassword,
     validateUserAlreadyExists,
     addUser,
+  )
+  .get(
+    validateJWT,
+    getAllUsers,
   );
 
 app.route('/login')
