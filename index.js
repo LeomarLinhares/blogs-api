@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const validateJWT = require('./api/auth/validateJWT');
+
 const {
   addUser,
   getAllUsers,
   getUserById,
-} = require('./controllers/userController');
-const { login } = require('./controllers/loginController');
-const validateJWT = require('./api/auth/validateJWT');
+  login,
+  createCategory,
+} = require('./controllers');
 const {
   validadeDisplayNameLength,
   validateIfEmailExists,
@@ -60,4 +62,9 @@ app.route('/login')
     passwordFieldIsEmpty,
     validateUserNotExists,
     login,
+  );
+
+app.route('/categories')
+  .post(
+    createCategory,
   );
