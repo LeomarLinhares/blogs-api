@@ -22,4 +22,14 @@ module.exports = {
       console.log(error);
     }
   },
+
+  getById: async (id) => {
+    try {
+      const { dataValues } = await User.findByPk(id);
+      delete dataValues.password;
+      return dataValues;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
