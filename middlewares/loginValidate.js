@@ -7,4 +7,11 @@ module.exports = {
 
     next();
   },
+
+  passwordFieldIsEmpty: (req, res, next) => {
+    const { password } = req.body;
+    if (password.length === 0) return res.status(400).json({ message: MSG.ER_EMPTY_PASSWORD });
+
+    next();
+  },
 };
