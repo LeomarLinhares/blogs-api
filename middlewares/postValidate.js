@@ -7,4 +7,11 @@ module.exports = {
 
     next();
   },
+
+  validateIfContentExists: (req, res, next) => {
+    const { content } = req.body;
+    if (content === undefined) return res.status(400).json({ message: MSG.CONTENT_REQUIRED });
+
+    next();
+  },
 };
