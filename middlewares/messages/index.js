@@ -10,4 +10,8 @@ module.exports = {
   INVALID_FIELDS: 'Invalid fields',
   USER_DOES_NOT_EXIST: 'User does not exist',
   NAME_REQUIRED: '"name" is required',
+  TITLE_REQUIRED: '"title" is required',
+  CONTENT_REQUIRED: '"content" is required',
+  CATEGORY_IDS_REQUIRED: '"categoryIds" is required',
+  CATEGORY_ID_NOT_FOUND: '"categoryIds" not found',
 };
