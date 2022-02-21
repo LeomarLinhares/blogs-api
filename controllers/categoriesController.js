@@ -5,4 +5,9 @@ module.exports = {
     const response = await categoriesService.create(req.body);
     res.status(201).json(response);
   },
+
+  getAllCategories: async (_req, res) => {
+    const response = await categoriesService.getAll();
+    res.status(200).json(response);
+  },
 };
