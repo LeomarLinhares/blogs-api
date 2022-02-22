@@ -6,4 +6,9 @@ module.exports = {
     const response = await postService.create(req.body, token);
     res.status(201).json(response);
   },
+
+  getAllPosts: async (_req, res) => {
+    const response = await postService.getAll();
+    res.status(200).json(response);
+  },
 };
