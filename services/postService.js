@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const { BlogPost, User, PostsCategory } = require('../models');
+const { BlogPost, User, PostsCategory, Category } = require('../models');
 
 const secret = process.env.JWT_SECRET;
 
@@ -22,5 +22,23 @@ module.exports = {
     }));
 
     return { id: createdPost.id, userId: id, title, content };
+  },
+
+  getAll: async () => {
+    const response = BlogPost.findAll({
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: { exclude: ['password'] },
+        },
+        {
+          model: Category,
+          as: 'categories',
+        },
+      ],
+    });
+
+    return response;
   },
 };
