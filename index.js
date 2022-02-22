@@ -12,6 +12,7 @@ const {
   createPost,
   getAllPosts,
   getPostById,
+  updatePost,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -30,6 +31,8 @@ const {
   validateIfCategoryIdsExists,
   validateIfInformedCategoryIdExistsInDatabase,
   validateIfPostExistsInDatabase,
+  validateIfCategoryIsBeingModified,
+  validateAuthorizationToEditPost,
 } = require('./middlewares');
 
 const app = express();
@@ -90,6 +93,14 @@ app.route('/post/:id')
     validateJWT,
     validateIfPostExistsInDatabase,
     getPostById,
+  )
+  .put(
+    validateJWT,
+    validateIfCategoryIsBeingModified,
+    validateAuthorizationToEditPost,
+    validateIfTitleExists,
+    validateIfContentExists,
+    updatePost,
   );
 
 app.route('/post')
