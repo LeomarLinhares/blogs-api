@@ -11,6 +11,7 @@ const {
   getAllCategories,
   createPost,
   getAllPosts,
+  getPostById,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -28,6 +29,7 @@ const {
   validateIfContentExists,
   validateIfCategoryIdsExists,
   validateIfInformedCategoryIdExistsInDatabase,
+  validateIfPostExistsInDatabase,
 } = require('./middlewares');
 
 const app = express();
@@ -81,6 +83,13 @@ app.route('/categories')
   .get(
     validateJWT,
     getAllCategories,
+  );
+
+app.route('/post/:id')
+  .get(
+    validateJWT,
+    validateIfPostExistsInDatabase,
+    getPostById,
   );
 
 app.route('/post')
