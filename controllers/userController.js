@@ -16,4 +16,10 @@ module.exports = {
     const response = await userService.getById(id);
     res.status(200).json(response);
   },
+
+  deleteMe: async (req, res) => {
+    const token = req.headers.authorization;
+    await userService.remove(token);
+    res.status(204).end();
+  },
 };
