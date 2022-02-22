@@ -14,6 +14,7 @@ const {
   getPostById,
   updatePost,
   deletePost,
+  deleteMe,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -34,6 +35,7 @@ const {
   validateIfPostExistsInDatabase,
   validateIfCategoryIsBeingModified,
   validateUserAuthorization,
+  validateUserAuthorizationToDeleteYourself,
 } = require('./middlewares');
 
 const app = express();
@@ -45,6 +47,13 @@ app.listen(3000, () => console.log('ouvindo porta 3000!'));
 app.get('/', (request, response) => {
   response.send();
 });
+
+app.route('/user/me')
+  .delete(
+    validateJWT,
+    validateUserAuthorizationToDeleteYourself,
+    deleteMe,
+  );
 
 app.route('/user/:id')
   .get(
