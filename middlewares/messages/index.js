@@ -14,4 +14,5 @@ module.exports = {
   CONTENT_REQUIRED: '"content" is required',
   CATEGORY_IDS_REQUIRED: '"categoryIds" is required',
   CATEGORY_ID_NOT_FOUND: '"categoryIds" not found',
+  POST_NOT_FOUND: 'Post does not exist',
 };
