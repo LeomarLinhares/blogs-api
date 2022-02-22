@@ -59,4 +59,18 @@ module.exports = {
       console.log(error);
     }
   },
+
+  update: async (id, { title, content }) => {
+    await BlogPost.update({ title, content }, { where: { id } });
+
+    const updated = await BlogPost.findOne({
+      where: { id },
+      attributes: { exclude: ['id', 'published', 'updated'] },
+      include: [
+        { model: Category, as: 'categories' },
+      ],
+    });
+
+    return updated;
+  },
 };
