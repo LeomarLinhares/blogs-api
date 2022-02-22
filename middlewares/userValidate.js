@@ -1,5 +1,9 @@
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 const MSG = require('./messages');
 const { User } = require('../models');
+
+const secret = process.env.JWT_SECRET;
 
 module.exports = {
   validadeDisplayNameLength: (req, res, next) => {
@@ -52,6 +56,17 @@ module.exports = {
     const { id } = req.params;
     const userInfos = await User.findByPk(id);
     if (userInfos === null) res.status(404).json({ message: MSG.USER_DOES_NOT_EXIST });
+
+    next();
+  },
+
+  validateUserAuthorizationToDeleteYourself: async (req, res, next) => {
+    try {
+      const token = req.headers.authorization;
+      jwt.verify(token, secret);
+    } catch (error) {
+      return res.status(401).json({ message: MSG.UNAUTHORIZED_USER });
+    }
 
     next();
   },
