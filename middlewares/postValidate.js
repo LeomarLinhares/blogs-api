@@ -1,5 +1,9 @@
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 const MSG = require('./messages');
-const { Category, BlogPost } = require('../models');
+const { Category, BlogPost, User } = require('../models');
+
+const secret = process.env.JWT_SECRET;
 
 module.exports = {
   validateIfTitleExists: (req, res, next) => {
@@ -48,6 +52,21 @@ module.exports = {
   validateIfCategoryIsBeingModified: async (req, res, next) => {
     if (req.body.categoryIds !== undefined) {
       return res.status(400).json({ message: MSG.CATEGORY_IDS_CANT_BE_MODIFIED });
+    }
+
+    next();
+  },
+
+  validateAuthorizationToEditPost: async (req, res, next) => {
+    const token = req.headers.authorization;
+    const { id } = req.params;
+    const { userId } = await BlogPost.findByPk(id);
+    const { email: userEmail } = await User.findByPk(userId);
+    try {
+      const { email } = jwt.verify(token, secret);
+      if (email !== userEmail) return res.status(401).json({ message: MSG.UNAUTHORIZED_USER });
+    } catch (error) {
+      console.log(error);
     }
 
     next();
