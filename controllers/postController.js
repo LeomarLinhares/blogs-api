@@ -11,4 +11,10 @@ module.exports = {
     const response = await postService.getAll();
     res.status(200).json(response);
   },
+
+  getPostById: async (req, res) => {
+    const { id } = req.params;
+    const response = await postService.getById(id);
+    res.status(200).json(response);
+  },
 };
