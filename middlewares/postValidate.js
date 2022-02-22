@@ -1,5 +1,5 @@
 const MSG = require('./messages');
-const { Category } = require('../models');
+const { Category, BlogPost } = require('../models');
 
 module.exports = {
   validateIfTitleExists: (req, res, next) => {
@@ -34,6 +34,14 @@ module.exports = {
     
     if (!allCategoriesExists) return res.status(400).json({ message: MSG.CATEGORY_ID_NOT_FOUND });
   
+    next();
+  },
+
+  validateIfPostExistsInDatabase: async (req, res, next) => {
+    const { id } = req.params;
+    const post = await BlogPost.findByPk(id);
+    if (post === null) return res.status(404).json({ message: MSG.POST_NOT_FOUND });
+
     next();
   },
 };
