@@ -10,6 +10,7 @@ const {
   createCategory,
   getAllCategories,
   createPost,
+  getAllPosts,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -90,4 +91,8 @@ app.route('/post')
     validateIfCategoryIdsExists,
     validateIfInformedCategoryIdExistsInDatabase,
     createPost,
+  )
+  .get(
+    validateJWT,
+    getAllPosts,
   );
