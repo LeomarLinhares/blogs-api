@@ -32,7 +32,7 @@ const {
   validateIfInformedCategoryIdExistsInDatabase,
   validateIfPostExistsInDatabase,
   validateIfCategoryIsBeingModified,
-  validateAuthorizationToEditPost,
+  validateUserAuthorization,
 } = require('./middlewares');
 
 const app = express();
@@ -97,7 +97,7 @@ app.route('/post/:id')
   .put(
     validateJWT,
     validateIfCategoryIsBeingModified,
-    validateAuthorizationToEditPost,
+    validateUserAuthorization,
     validateIfTitleExists,
     validateIfContentExists,
     updatePost,

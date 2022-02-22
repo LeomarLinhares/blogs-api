@@ -57,7 +57,7 @@ module.exports = {
     next();
   },
 
-  validateAuthorizationToEditPost: async (req, res, next) => {
+  validateUserAuthorization: async (req, res, next) => {
     const token = req.headers.authorization;
     const { id } = req.params;
     const { userId } = await BlogPost.findByPk(id);
