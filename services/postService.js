@@ -41,4 +41,22 @@ module.exports = {
 
     return response;
   },
+
+  getById: async (id) => {
+    try {
+      const response = BlogPost.findOne({ where: { id },
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: { exclude: ['password'] },
+          },
+          { model: Category, as: 'categories' },
+        ],
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
