@@ -13,6 +13,7 @@ const {
   getAllPosts,
   getPostById,
   updatePost,
+  deletePost,
 } = require('./controllers');
 const {
   validadeDisplayNameLength,
@@ -101,6 +102,12 @@ app.route('/post/:id')
     validateIfTitleExists,
     validateIfContentExists,
     updatePost,
+  )
+  .delete(
+    validateJWT,
+    validateIfPostExistsInDatabase,
+    validateUserAuthorization,
+    deletePost,
   );
 
 app.route('/post')
