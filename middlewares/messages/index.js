@@ -15,4 +15,6 @@ module.exports = {
   CATEGORY_IDS_REQUIRED: '"categoryIds" is required',
   CATEGORY_ID_NOT_FOUND: '"categoryIds" not found',
   POST_NOT_FOUND: 'Post does not exist',
+  CATEGORY_IDS_CANT_BE_MODIFIED: 'Categories cannot be edited',
+  UNAUTHORIZED_USER: 'Unauthorized user',
 };
