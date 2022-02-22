@@ -44,4 +44,12 @@ module.exports = {
 
     next();
   },
+
+  validateIfCategoryIsBeingModified: async (req, res, next) => {
+    if (req.body.categoryIds !== undefined) {
+      return res.status(400).json({ message: MSG.CATEGORY_IDS_CANT_BE_MODIFIED });
+    }
+
+    next();
+  },
 };
