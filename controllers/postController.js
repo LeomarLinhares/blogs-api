@@ -23,4 +23,10 @@ module.exports = {
     const response = await postService.update(id, req.body);
     res.status(200).json(response);
   },
+
+  deletePost: async (req, res) => {
+    const { id } = req.params;
+    await postService.remove(id);
+    res.status(204).end();
+  },
 };
