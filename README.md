@@ -12,6 +12,7 @@ Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramenta
 * [Node.js](https://nodejs.org/en/) - Software para permitir execução de Javascript fora do navegador web.
 * [Express](https://expressjs.com/pt-br/) - Framework para criação do servidor.
 * [Sequelize](https://sequelize.org/) - ORM para mapeamento e comunicação com o banco de dados.
+* [JWT](https://jwt.io/) - Criação de tokens com assinatura.
 
 # Blogs API
 
