@@ -88,6 +88,7 @@ Rotas utilizadas pela aplicação web para executar metodos de **POST**, **GET**
 ### GET ```/user```
 
 ```json
+// retorna
 [
   {
     "id": "401465483996",
@@ -101,6 +102,7 @@ Rotas utilizadas pela aplicação web para executar metodos de **POST**, **GET**
 ### GET ```/user:id```
 
 ```json
+// retorna
 {
   "id": "401465483996",
   "displayName": "Leomar Linhares",
