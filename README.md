@@ -6,9 +6,27 @@
 ---
 
 ## Inicialização
-Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramentas*.
+Para rodar essa aplicação, você precisará das seguintes ferramentas instaladas:
+* Node Package Manager que pode ser encontrado [clicando aqui](https://www.npmjs.com/).
+* Node para executar o Javascript fora do navegador. Pode ser encontrado [clicando aqui](https://nodejs.org/en/).
+* Git para poder clonar e ter acesso a opções de versionamento, pode ser encontrado [clicando aqui](https://git-scm.com/).
+* MySQL para gerar o banco de dados, que pode ser encontrado [clicando aqui](https://www.mysql.com/).
 
-## Ferramentas
+### Passos pós instalação:
+ - 1 - Escolha um diretório de sua preferência e clone esse repositório escrevendo em seu terminal o seguinte comando:
+
+```git clone git@github.com:LeomarLinhares/blogs-api.git```
+ - 2 - Caminhe até o diretório criado:
+
+```cd blogs-api```
+ - 3 - Instale as dependências:
+
+```npm install```
+ - 4 - Inicie a aplicação:
+
+```npm start```
+
+## Ferramentas utilizadas no desenvolvimento
 * [Node.js](https://nodejs.org/en/) - Software para permitir execução de Javascript fora do navegador web.
 * [Express](https://expressjs.com/pt-br/) - Framework para criação do servidor.
 * [Sequelize](https://sequelize.org/) - ORM para mapeamento e comunicação com o banco de dados.
