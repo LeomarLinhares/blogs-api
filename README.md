@@ -15,16 +15,24 @@ Para rodar essa aplicação, você precisará das seguintes ferramentas instalad
 ### Passos pós instalação:
  - 1 - Escolha um diretório de sua preferência e clone esse repositório escrevendo em seu terminal o seguinte comando:
 
-```git clone git@github.com:LeomarLinhares/blogs-api.git```
+```bash
+git clone git@github.com:LeomarLinhares/blogs-api.git
+```
  - 2 - Caminhe até o diretório criado:
 
-```cd blogs-api```
+```bash
+cd blogs-api
+```
  - 3 - Instale as dependências:
 
-```npm install```
+```bash
+npm install
+```
  - 4 - Inicie a aplicação:
 
-```npm start```
+```bash
+npm start
+```
 
 ## Ferramentas utilizadas no desenvolvimento
 * [Node.js](https://nodejs.org/en/) - Software para permitir execução de Javascript fora do navegador web.
